@@ -1,0 +1,34 @@
+import 'package:bookly/features/splash/presentation/views/splash_view.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+
+void main() {
+  runApp(const BooklyApp());
+}
+
+class BooklyApp extends StatelessWidget {
+  const BooklyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Bookly App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+          color: Colors.white,
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.black),
+          titleTextStyle: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      home: const SplashView(),
+    );
+  }
+}
