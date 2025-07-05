@@ -16,7 +16,7 @@ class HomeViewBody extends StatelessWidget {
         SizedBox(height: 50),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 18),
-          child: Text("Best Sellers", style: Styles.titleMediam),
+          child: Text("Best Sellers", style: Styles.textStyle18),
         ),
         Padding(
           padding: EdgeInsets.only(left: 18.0, top: 8),
