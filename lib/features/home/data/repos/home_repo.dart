@@ -6,6 +6,6 @@ abstract class HomeRepo {
   // Dart does not allow you to use two return types for a single variable
   // Either is used to handle success and failure cases
   // Left side is for failure, Right side is for success
-  Future<Either<Failure, List<BookModel>>> fetchBestSellerBooks();
+  Future<Either<Failure, List<BookModel>>> fetchNewsetBooks();
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks();
 }
