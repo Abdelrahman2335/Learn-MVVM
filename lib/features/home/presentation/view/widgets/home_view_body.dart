@@ -1,3 +1,4 @@
+import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/home/presentation/view/widgets/best_seller_list_view.dart';
@@ -5,6 +6,7 @@ import 'package:bookly/features/home/presentation/view/widgets/custom_app_bar.da
 import 'package:bookly/features/home/presentation/view/widgets/top_books_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -19,7 +21,9 @@ class HomeViewBody extends StatelessWidget {
               CustomAppBar(
                 leading: Image.asset(AssetsData.logo, height: 18),
                 actions: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    GoRouter.of(context).push(AppRouter.kSearchView);
+                  },
                   icon: Icon(FontAwesomeIcons.magnifyingGlass, size: 22),
                 ),
               ),

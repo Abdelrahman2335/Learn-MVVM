@@ -22,6 +22,7 @@ class CustomButtom extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 48,
+      width: 150,
       child: TextButton(
         style: TextButton.styleFrom(
           backgroundColor: backgroundColor,
