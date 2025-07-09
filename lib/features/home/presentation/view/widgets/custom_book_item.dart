@@ -6,8 +6,8 @@ import 'package:bookly/features/home/presentation/view/widgets/book_rating.dart'
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key});
+class CustomBookItem extends StatelessWidget {
+  const CustomBookItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class BookListViewItem extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 3),
-                  Text(
+                  const Text(
                     "J.K. Rowling",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
