@@ -5,6 +5,7 @@ import 'package:bookly/core/utils/api_service.dart';
 import 'package:bookly/features/home/data/model/book_model/book_model.dart';
 import 'package:bookly/features/home/data/repos/home_repo.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 class HomeRepoImpl implements HomeRepo {
   final ApiService apiService;
@@ -18,14 +19,19 @@ class HomeRepoImpl implements HomeRepo {
             "volumes? Filtering-free-ebooks&Sorting=newest &q=subject:Programming",
       );
 
-      List<BookModel> books = (data['items'] as List)
-          .map((book) => BookModel.fromJson(book))
-          .toList();
+      List<BookModel> books =
+          (data['items'] as List)
+              .map((book) => BookModel.fromJson(book))
+              .toList();
 
-          return right(books);
-    }on Exception catch (e) {
-      log("Error fetching newest books: $e");
-      return Left(ServerFailure());
+      return right(books);
+    } on Exception catch (error) {
+      log("Error fetching newest books: $error");
+
+      if (error is DioException) {
+        Left(ServerFailure.fromDioException(error));
+      }
+      return Left(ServerFailure(error.toString()));
     }
   }
 
