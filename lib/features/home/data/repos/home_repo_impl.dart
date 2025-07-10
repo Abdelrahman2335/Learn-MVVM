@@ -10,12 +10,18 @@ import 'package:dio/dio.dart';
 class HomeRepoImpl implements HomeRepo {
   final ApiService apiService;
 
-  HomeRepoImpl(this.apiService);
+  HomeRepoImpl._(this.apiService);
+
+  static final HomeRepoImpl _instance = HomeRepoImpl._(ApiService());
+
+  factory HomeRepoImpl() => _instance;
+
   @override
   Future<Either<Failure, List<BookModel>>> fetchNewsetBooks() async {
     try {
       var data = await apiService.get(
-        endPoint: "volumes? Filtering-free-ebooks&q=subject:Programming",
+        endPoint:
+            "volumes? Filtering-free-ebooks&Sorting=newest &q=subject:Programming",
       );
 
       List<BookModel> books =
@@ -35,11 +41,10 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchTopBooks() async {
+  Future<Either<Failure, List<BookModel>>> fetchPopularBooks() async {
     try {
       var data = await apiService.get(
-        endPoint:
-            "volumes? Filtering-free-ebooks&Sorting=newest &q=subject:Programming",
+        endPoint: "volumes? Filtering-free-ebooks&q=subject:Programming",
       );
 
       List<BookModel> books =

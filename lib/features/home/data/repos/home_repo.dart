@@ -7,5 +7,5 @@ abstract class HomeRepo {
   // Either is used to handle success and failure cases
   // Left side is for failure, Right side is for success
   Future<Either<Failure, List<BookModel>>> fetchNewsetBooks();
-  Future<Either<Failure, List<BookModel>>> fetchTopBooks();
+  Future<Either<Failure, List<BookModel>>> fetchPopularBooks();
 }

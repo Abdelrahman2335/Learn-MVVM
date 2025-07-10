@@ -3,7 +3,7 @@ import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/home/presentation/view/widgets/best_seller_list_view.dart';
 import 'package:bookly/features/home/presentation/view/widgets/custom_app_bar.dart';
-import 'package:bookly/features/home/presentation/view/widgets/top_books_list_view.dart';
+import 'package:bookly/features/home/presentation/view/widgets/popular_books_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -27,7 +27,7 @@ class HomeViewBody extends StatelessWidget {
                   icon: Icon(FontAwesomeIcons.magnifyingGlass, size: 22),
                 ),
               ),
-              const TopBooksListView(),
+              const PopularBooksListView(),
               const SizedBox(height: 51),
               const Padding(
                 padding: EdgeInsets.only(left: 30.0, bottom: 10),
