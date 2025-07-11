@@ -1,14 +1,16 @@
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/app_router.dart';
-import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/home/data/model/book_model/book_model.dart';
 import 'package:bookly/features/home/presentation/view/widgets/book_rating.dart';
+import 'package:bookly/features/home/presentation/view/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class CustomBookItem extends StatelessWidget {
-  const CustomBookItem({super.key});
+  const CustomBookItem({super.key, required this.book});
 
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,17 +20,8 @@ class CustomBookItem extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(
-              child: AspectRatio(
-                aspectRatio: 2.4 / 4,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    image: DecorationImage(
-                      image: AssetImage(AssetsData.testImage),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                ),
+              child: CustomBookImage(
+                imageUrl: book.volumeInfo!.imageLinks!.thumbnail!,
               ),
             ),
             const SizedBox(width: 30),
@@ -40,7 +33,7 @@ class CustomBookItem extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.5,
 
                     child: Text(
-                      "Harry Potter and the Goblet of Fire",
+                      book.volumeInfo!.title!,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.textStyle20.copyWith(
@@ -49,8 +42,10 @@ class CustomBookItem extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 3),
-                  const Text(
-                    "J.K. Rowling",
+                  Text(
+                    book.volumeInfo!.authors!.isNotEmpty
+                        ? book.volumeInfo!.authors![0]
+                        : "Unknown Author",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle14,
@@ -60,7 +55,7 @@ class CustomBookItem extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        "19.99 €",
+                        "Free",
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: Styles.textStyle20.copyWith(

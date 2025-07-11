@@ -1,3 +1,4 @@
+import 'package:bookly/features/home/data/model/book_model/book_model.dart';
 import 'package:bookly/features/home/presentation/view/widgets/custom_book_item.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class ReachResult extends StatelessWidget {
       delegate: SliverChildBuilderDelegate((context, index) {
         return Padding(
           padding: const EdgeInsets.only(left: 30.0, top: 10, bottom: 10),
-          child: const CustomBookItem(),
+          child: const CustomBookItem(book: BookModel()),
         );
       }, childCount: 10),
     );
