@@ -9,6 +9,7 @@ final String errorMessage;
     return Center(
       child: Text(errorMessage,
         style: Styles.textStyle18,
+        textAlign: TextAlign.center,
       ),
     );
   }
