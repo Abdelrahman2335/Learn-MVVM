@@ -1,5 +1,6 @@
+import 'package:bookly/core/functions/launch_url.dart';
 import 'package:bookly/core/widgets/custom_buttom.dart';
-import 'package:bookly/features/home/data/model/book_model/book_model.dart';
+import 'package:bookly/core/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -28,10 +29,7 @@ class BooksAction extends StatelessWidget {
             textColor: Colors.white,
             buttonText: getText(book),
             onPressed: () async {
-              final Uri uri = Uri.parse(book.volumeInfo!.previewLink!);
-              if (await canLaunchUrl(uri)) {
-                await launchUrl(uri);
-              }
+              launchCustomUrl(context, book.volumeInfo!.previewLink ?? '');
             },
             borderRadius: const BorderRadius.only(
               topRight: Radius.circular(12),
@@ -43,12 +41,13 @@ class BooksAction extends StatelessWidget {
       ),
     );
   }
-  
- String getText(BookModel book) {
-  if(book.volumeInfo!.previewLink == null || book.volumeInfo!.previewLink!.isEmpty) {
-    return "Not Available";
-  } else {
-    return "Preview";
+
+  String getText(BookModel book) {
+    if (book.volumeInfo!.previewLink == null ||
+        book.volumeInfo!.previewLink!.isEmpty) {
+      return "Not Available";
+    } else {
+      return "Preview";
+    }
   }
- }
 }

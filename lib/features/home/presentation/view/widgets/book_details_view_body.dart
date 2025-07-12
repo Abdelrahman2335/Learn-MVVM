@@ -1,4 +1,4 @@
-import 'package:bookly/features/home/data/model/book_model/book_model.dart';
+import 'package:bookly/core/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentation/view/widgets/book_details_section.dart';
 import 'package:bookly/features/home/presentation/view/widgets/custom_app_bar.dart';
 import 'package:bookly/features/home/presentation/view/widgets/similar_books_section.dart';
@@ -30,15 +30,15 @@ class BookDetailsViewBody extends StatelessWidget {
                     onPressed: () {
                       GoRouter.of(context).pop();
                     },
-                    icon: const Icon(FontAwesomeIcons.x),
+                    icon: const Icon(FontAwesomeIcons.x, size: 20),
                   ),
                   actions: IconButton(
                     onPressed: () {},
-                    icon: const Icon(FontAwesomeIcons.cartShopping),
+                    icon: const Icon(FontAwesomeIcons.cartShopping, size: 20),
                   ),
                 ),
               ),
-               BookDetailsSection(book: book,),
+              BookDetailsSection(book: book),
 
               const Expanded(child: SizedBox(height: 50)),
               const SimilarBooksSection(),
