@@ -52,7 +52,7 @@ class PopularBooksListView extends StatelessWidget {
         } else if (state is PopularBooksFailure) {
           return CustomErrorWidget(errorMessage: state.errorMessage);
         } else {
-          return const CustomLaondingIndicator();
+          return const CustomLoadingIndicator();
         }
       },
     );

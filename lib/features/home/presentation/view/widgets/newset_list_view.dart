@@ -27,7 +27,7 @@ class NewsetListView extends StatelessWidget {
             child: CustomErrorWidget(errorMessage: state.errorMessage),
           );
         }
-        return const SliverToBoxAdapter(child: CustomLaondingIndicator());
+        return const SliverToBoxAdapter(child: CustomLoadingIndicator());
       },
     );
   }

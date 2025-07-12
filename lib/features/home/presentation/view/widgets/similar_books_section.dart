@@ -28,7 +28,8 @@ class SimilarBooksSection extends StatelessWidget {
 
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: state is SimilarBooksSuccess ? state.books.length : 0,
+                itemCount:
+                    state is SimilarBooksSuccess ? state.books.length : 0,
                 itemBuilder: (context, index) {
                   if (state is SimilarBooksSuccess) {
                     return Padding(
@@ -44,9 +45,9 @@ class SimilarBooksSection extends StatelessWidget {
                       ),
                     );
                   } else if (state is SimilarBooksFailure) {
-                    return  CustomErrorWidget(errorMessage: state.errorMessage);
+                    return CustomErrorWidget(errorMessage: state.errorMessage);
                   } else {
-                    return const CustomLaondingIndicator();
+                    return const CustomLoadingIndicator();
                   }
                 },
               ),
